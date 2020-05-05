@@ -1,8 +1,8 @@
-val Http4sVersion     = "0.21.0-M5"
+val Http4sVersion     = "0.21.3"
 val CirceVersion      = "0.12.3"
 val DoobieVersion     = "0.8.6"
 val ZIOVersion        = "1.0.0-RC18-2"
-val ZIOLoggingVersion = "0.2.6"
+val ZIOLoggingVersion = "0.2.7"
 val SilencerVersion   = "1.4.4"
 val Log4j2Version     = "2.13.1"
 
@@ -41,12 +41,12 @@ lazy val root = (project in file("."))
       "UTF-8",
       "-language:higherKinds",
       "-language:existentials",
-      "-Xfatal-warnings",
+      //"-Xfatal-warnings",
       "-Xlint:-infer-any,_",
       "-Ywarn-value-discard",
       "-Ywarn-numeric-widen",
       "-Ywarn-extra-implicit",
-      "-Ywarn-unused:_"
+      //"-Ywarn-unused:_"
     ) ++ (if (isSnapshot.value) Seq.empty
           else
             Seq(
@@ -56,6 +56,7 @@ lazy val root = (project in file("."))
       "org.http4s"               %% "http4s-blaze-server" % Http4sVersion,
       "org.http4s"               %% "http4s-circe"        % Http4sVersion,
       "org.http4s"               %% "http4s-dsl"          % Http4sVersion,
+      "org.http4s"               %% "http4s-blaze-client" % Http4sVersion,
       "io.circe"                 %% "circe-core"          % CirceVersion,
       "io.circe"                 %% "circe-generic"       % CirceVersion,
       "io.circe"                 %% "circe-literal"       % CirceVersion % "test",
@@ -66,8 +67,8 @@ lazy val root = (project in file("."))
       "dev.zio"                  %% "zio-test"            % ZIOVersion % "test",
       "dev.zio"                  %% "zio-test-sbt"        % ZIOVersion % "test",
       "dev.zio"                  %% "zio-interop-cats"    % "2.0.0.0-RC12",
-      "dev.zio"                  %% "zio-logging"         % ZIOLoggingVersion,
-      "dev.zio"                  %% "zio-logging-slf4j"   % ZIOLoggingVersion,
+      "dev.zio"                  %% "zio-logging"         % "0.2.7",
+      "dev.zio"                  %% "zio-logging-slf4j"   % "0.2.7",
       "org.flywaydb"             % "flyway-core"          % "5.2.4",
       "com.h2database"           % "h2"                   % "1.4.199",
       "org.apache.logging.log4j" % "log4j-api"            % Log4j2Version,

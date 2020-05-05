@@ -1,8 +1,8 @@
 package com.news4you.http
 
 import HTTPSpec._
-import com.news4you.http.TodoService.TodoItemWithUri
-import com.news4you.repository.InMemoryTodoRepository
+import com.news4you.http.CrawlerService.TodoItemWithUri
+import com.news4you.crawler.InMemoryTodoRepository
 import io.circe.Decoder
 import io.circe.literal._
 import org.http4s.circe._
@@ -11,13 +11,13 @@ import org.http4s.{Status, _}
 import zio._
 import zio.interop.catz._
 import zio.test._
-import com.news4you.http.TodoService.TodoItemWithUri
-import com.news4you.repository.{InMemoryTodoRepository, TodoRepository}
+import com.news4you.http.CrawlerService.TodoItemWithUri
+import com.news4you.crawler.{InMemoryTodoRepository, Crawler}
 
 object TodoServiceSpec extends DefaultRunnableSpec {
-  type TodoTask[A] = RIO[TodoRepository, A]
+  type TodoTask[A] = RIO[Crawler, A]
 
-  val app = TodoService.routes[TodoRepository]("").orNotFound
+  val app = CrawlerService.routes[Crawler]("").orNotFound
 
   override def spec =
     suite("TodoService")(

@@ -8,7 +8,7 @@
 
     <Loggers>
         <Logger name="com.news4you" level="info"/>
-        <Logger name="com.news4you.repository" level="info"/>
+        <Logger name="com.news4you.crawler" level="info"/>
 
         <Root level="info">
             <AppenderRef ref="Console" />
